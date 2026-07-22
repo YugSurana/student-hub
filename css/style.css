@@ -1,0 +1,72 @@
+ body {
+            background-color: rgb(245, 245, 220); /* Classic Beige */
+            color: rgb(90, 80, 65);              /* Matching deep beige-brown text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            color: rgb(70, 60, 45); 
+            font-weight: bold;
+        }
+
+        header p {
+            font-style: italic;
+            margin-top: 0;
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        /* Nav Container: Houses all the link buttons beautifully */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;                            /* Uniform gap between buttons */
+            flex-wrap: wrap;                      /* Wraps buttons neatly if screen is small */
+            background-color: rgb(238, 232, 210); /* Slightly deeper beige background container */
+            padding: 15px;                        /* Spacing inside the nav container */
+            border-radius: 12px;                  /* Rounded corners for the entire nav bar */
+            max-width: 1000px;
+            margin: 0 auto;                       /* Centers the nav bar on the screen */
+        }
+
+        /* Targets ALL anchor tags (links) inside the nav bar */
+        nav a {
+            background-color: rgb(228, 220, 195); /* Even deeper beige button color */
+            color: rgb(90, 80, 65);               /* Text color remains perfectly matched */
+            text-decoration: none;                /* Removes standard blue underlines */
+            padding: 12px 24px;                   /* Increases button size uniformly */
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: capitalize;           /* Capitalizes the first letter automatically */
+            border-radius: 8px;                   /* Clean, rounded buttons */
+            border: 1px solid rgb(215, 205, 180); /* Subtle matching border definition */
+            display: inline-block;
+            transition: all 0.25s ease-in-out;    /* Smooth color and movement animation */
+        }
+
+        /* Hover style for ALL buttons */
+        nav a:hover {
+            background-color: rgb(90, 80, 65);    /* Inverts colors: uses font color as background */
+            color: rgb(245, 245, 220);            /* Inverts colors: uses body beige for text */
+            transform: translateY(-2px);          /* Small lift effect when hovered */
+            box-shadow: 0 4px 10px rgba(90, 80, 65, 0.15); /* Soft matching shadow drop */
+        }
+
+        /* Aesthetic thin line divider */
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: rgba(90, 80, 65, 0.15); 
+            margin: 30px 0;
+        }
