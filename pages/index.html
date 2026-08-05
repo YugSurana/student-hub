@@ -3,34 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - home</title>
-    <link rel="icon" type="image/png" href="/docs/sitemap.png">
-    <link rel="stylesheet" href="/css/style.css"
+
+    <title>StudentHub - Home</title>
+
+    <link rel="icon" type="image/png" href="../docs/sitemap.png">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
     <header>
-        <h1>StudentHub</h1>
-        <p>Your digital campus portal</p>
+        <div class="heading-group">
+            <h1>Student Hub</h1>
+            <img src="../docs/campus.jpg" alt="StudentHub Campus" class="heading-img">
+        </div>
     </header>
-    
+    <h2 id="yug">hello my friend 👍</h2>
+
     <hr>
-    
-    <!-- Cleaned up your HTML. Wrapped plain links directly so they inherit the clean button styles -->
-    <nav>
-        <a href="index.html">home</a>
-        <a href="about.html">about</a>
-        <a href="register.html">register</a>
-        <a href="login.html">login</a>
-        <a href="events.html">events</a>
-        <a href="profile.html">profile</a>
-        <a href="contact.html">contact</a>
-        <a href="admin.html">admin</a>
+
+    <nav class="nav-container">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="events.html">Events</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
         <a href="faq.html">FAQ</a>
-        <a href="feedback.html">feedback</a>  
-    </nav> 
+        <a href="feedback.html">Feedback</a>
+    </nav>
+    <main>
+        <section>
+            <div id="notification">
+                <span>
+                    workshop registration is now open
+                </span>
+                <button id="closeBtn"> hehe</button>
+            </div>
+        </section>
+    </main>
+
+    <main>
+
+        <section>
+            <h2>Welcome to StudentHub</h2>
+
+            <p>
+                StudentHub is a digital platform where students can register,
+                participate in events, manage their profiles, and access
+                academic information.
+            </p>
+        </section>
+
+        <article>
+            <h3>Upcoming Workshop</h3>
+
+            <p>
+                A Web Development Workshop will be conducted next week.
+            </p>
+        </article>
+
+        <aside>
+            <h3>Latest Notices</h3>
+
+            <ol type="i">
+                <li>Lab Submission on Friday</li>
+                <li>Workshop Registration Open</li>
+                <li>Hackathon Next Month</li>
+            </ol>
+        </aside>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
+    </footer>
     
-    <hr>
+    <script src="../js/script.js"></script>
 
 </body>
 </html>
