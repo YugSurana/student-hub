@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Yug Surana",
+    "email": "25it098@charusat.edu.in",
+    "mobile": "9876543210",
+    "password": "$2y$10$wK1k9qDk8e7K4U2pGz8rLe8J7b6H5n4M3v2C1x0Z9y8X7w6V5u4T3",
+    "course": "IT",
+    "year": "2",
+    "gender": "male",
+    "registered_at": "2026-10-19 18:45:00"
+  },
+  {
+    "name": "Aarav Patel",
+    "email": "25it012@charusat.edu.in",
+    "mobile": "9823456789",
+    "password": "$2y$10$vN0j8pCj7d6J3T1oFy7qKd7I6a5G4m3L2u1B0w9Y8x7W6v5U4t3S2",
+    "course": "IT",
+    "year": "2",
+    "gender": "male",
+    "registered_at": "2026-10-19 18:50:12"
+  },
+  {
+    "name": "Diya Shah",
+    "email": "25ce045@charusat.edu.in",
+    "mobile": "9812345678",
+    "password": "$2y$10$uM9i7oBi6c5I2S0nEx6pJc6H5z4F3l2K1t0A9v8X7w6V5u4T3s2R1",
+    "course": "CE",
+    "year": "2",
+    "gender": "female",
+    "registered_at": "2026-10-19 18:52:45"
+  },
+  {
+    "name": "Rohan Sharma",
+    "email": "24cse103@charusat.edu.in",
+    "mobile": "9898765432",
+    "password": "$2y$10$tL8h6nAh5b4H1R9mDw5oIb5G4y3E2k1J0s9Z8u7W6v5U4t3S2r1Q0",
+    "course": "CSE",
+    "year": "3",
+    "gender": "male",
+    "registered_at": "2026-10-19 18:55:30"
+  }
+]

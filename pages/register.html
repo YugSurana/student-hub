@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Registration</title>
+    <link rel="icon" type="image/png" href="../docs/sitemap.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="heading-group">
+            <h1>Student Hub</h1>
+
+            <img
+                src="../docs/campus.jpg"
+                alt="StudentHub Campus"
+                class="heading-img"
+            >
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-container">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="register.html" class="active">Register</a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="events.html">Events</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+        <a href="faq.html">FAQ</a>
+        <a href="feedback.html">Feedback</a>
+    </nav>
+
+    <!-- Theme & Quick Action Bar -->
+    <div class="action-bar-container">
+        <div class="action-bar">
+            <button id="theme-toggle" class="action-btn">
+                Dark Mode
+            </button>
+        </div>
+    </div>
+
+    <!-- Registration Section -->
+    <main>
+        <section id="registration" class="registration-card">
+            <h2>Student Registration</h2>
+            <p class="form-subtitle">Practical 5: Registration Form with Frontend Validation &amp; User-Friendly Error Handling</p>
+
+            <!-- Global Form Status Alerts -->
+            <div id="formSuccessMessage" class="form-alert alert-success" role="status" aria-live="polite" style="display: none;"></div>
+            <div id="formErrorMessage" class="form-alert alert-error" role="alert" aria-live="assertive" style="display: none;"></div>
+
+            <form
+                id="registrationForm"
+                action="../php/process_registrations.php"
+                method="POST"
+                novalidate>
+
+                <!-- CSRF Security Token (Practical 7 Advanced Extension) -->
+                <input type="hidden" name="csrf_token" id="csrfToken" value="d9e2a4f61b8c0357e93a7c6f10258b3c">
+
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="studentName" class="form-label">
+                        Full Name <span class="required-star" aria-hidden="true">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="studentName"
+                        name="studentName"
+                        class="form-control"
+                        placeholder="Enter your full name (e.g. John Doe)"
+                        autocomplete="name"
+                        required
+                        aria-required="true"
+                        aria-describedby="nameError">
+                    <span id="nameError" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        Email Address <span class="required-star" aria-hidden="true">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="Enter your email (e.g. student@charusat.edu.in)"
+                        autocomplete="email"
+                        required
+                        aria-required="true"
+                        aria-describedby="emailError">
+                    <span id="emailError" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Mobile Number -->
+                <div class="form-group">
+                    <label for="mobile" class="form-label">
+                        Mobile Number <span class="required-star" aria-hidden="true">*</span>
+                    </label>
+                    <input
+                        type="tel"
+                        id="mobile"
+                        name="mobile"
+                        class="form-control"
+                        placeholder="Enter 10-digit mobile number (e.g. 9876543210)"
+                        maxlength="10"
+                        autocomplete="tel"
+                        required
+                        aria-required="true"
+                        aria-describedby="mobileError">
+                    <span id="mobileError" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        Password <span class="required-star" aria-hidden="true">*</span>
+                    </label>
+                    <div class="password-field-wrapper">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Create a strong password"
+                            autocomplete="new-password"
+                            required
+                            aria-required="true"
+                            aria-describedby="passwordError passwordRules">
+                        <button
+                            type="button"
+                            id="togglePasswordBtn"
+                            class="toggle-password-btn"
+                            aria-label="Toggle password visibility">
+                            Show
+                        </button>
+                    </div>
+
+                    <!-- Password Strength Meter -->
+                    <div class="password-strength-container" aria-live="polite">
+                        <div class="strength-bar-track">
+                            <div id="strengthBarFill" class="strength-bar-fill"></div>
+                        </div>
+                        <div class="strength-label-row">
+                            <span>Password Strength:</span>
+                            <span id="strengthText">None</span>
+                        </div>
+                    </div>
+
+                    <!-- Password Requirements Checklist -->
+                    <ul class="password-criteria" id="passwordRules" aria-label="Password requirements">
+                        <li id="ruleLength" class="criterion-item"><span class="rule-icon">✕</span> At least 8 characters</li>
+                        <li id="ruleUpper" class="criterion-item"><span class="rule-icon">✕</span> At least 1 uppercase (A-Z)</li>
+                        <li id="ruleLower" class="criterion-item"><span class="rule-icon">✕</span> At least 1 lowercase (a-z)</li>
+                        <li id="ruleNumber" class="criterion-item"><span class="rule-icon">✕</span> At least 1 number (0-9)</li>
+                        <li id="ruleSpecial" class="criterion-item"><span class="rule-icon">✕</span> At least 1 special char (@$!%*?&amp;)</li>
+                    </ul>
+
+                    <span id="passwordError" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">
+                        Confirm Password <span class="required-star" aria-hidden="true">*</span>
+                    </label>
+                    <div class="password-field-wrapper">
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            class="form-control"
+                            placeholder="Re-enter your password"
+                            autocomplete="new-password"
+                            required
+                            aria-required="true"
+                            aria-describedby="confirmPasswordError">
+                        <button
+                            type="button"
+                            id="toggleConfirmPasswordBtn"
+                            class="toggle-password-btn"
+                            aria-label="Toggle confirm password visibility">
+                            Show
+                        </button>
+                    </div>
+                    <span id="confirmPasswordError" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Course -->
+                <div class="form-group">
+                    <label for="course" class="form-label">
+                        Course <span class="required-star" aria-hidden="true">*</span>
+                    </label>
+                    <select
+                        id="course"
+                        name="course"
+                        class="form-control"
+                        required
+                        aria-required="true"
+                        aria-describedby="courseError">
+                        <option value="">-- Select Course --</option>
+                        <option value="IT">Information Technology (IT)</option>
+                        <option value="CSE">Computer Science Engineering (CSE)</option>
+                        <option value="CE">Computer Engineering (CE)</option>
+                        <option value="AIML">Artificial Intelligence &amp; ML (AIML)</option>
+                    </select>
+                    <span id="courseError" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Year of Study -->
+                <div class="form-group">
+                    <label for="year" class="form-label">
+                        Year of Study <span class="required-star" aria-hidden="true">*</span>
+                    </label>
+                    <select
+                        id="year"
+                        name="year"
+                        class="form-control"
+                        required
+                        aria-required="true"
+                        aria-describedby="yearError">
+                        <option value="">-- Select Year --</option>
+                        <option value="1">1st Year (Semester 1 &amp; 2)</option>
+                        <option value="2">2nd Year (Semester 3 &amp; 4)</option>
+                        <option value="3">3rd Year (Semester 5 &amp; 6)</option>
+                        <option value="4">4th Year (Semester 7 &amp; 8)</option>
+                    </select>
+                    <span id="yearError" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Gender -->
+                <fieldset class="gender-fieldset" aria-describedby="genderError">
+                    <legend>Gender <span class="required-star" aria-hidden="true">*</span></legend>
+                    <div class="radio-options-row">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="male" id="genderMale"> Male
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="female" id="genderFemale"> Female
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="other" id="genderOther"> Other
+                        </label>
+                    </div>
+                    <span id="genderError" class="error-msg" role="alert" aria-live="polite"></span>
+                </fieldset>
+
+                <!-- Terms and Conditions -->
+                <div class="form-group">
+                    <label class="checkbox-label" for="terms">
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            name="terms"
+                            required
+                            aria-required="true"
+                            aria-describedby="termsError">
+                        <span>
+                            I confirm that the details provided are accurate and I agree to the
+                            <a href="#" onclick="return false;" style="color: var(--accent-color); font-weight: 600;">Terms &amp; Conditions</a>
+                            <span class="required-star" aria-hidden="true">*</span>
+                        </span>
+                    </label>
+                    <span id="termsError" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Advanced Extension: Custom Canvas CAPTCHA -->
+                <div class="form-group">
+                    <label for="captchaInput" class="form-label">
+                        Security Verification (CAPTCHA) <span class="required-star" aria-hidden="true">*</span>
+                    </label>
+                    <div class="captcha-box">
+                        <canvas
+                            id="captchaCanvas"
+                            width="160"
+                            height="42"
+                            aria-label="Security CAPTCHA image with verification text">
+                            Your browser does not support HTML5 Canvas.
+                        </canvas>
+                        <button
+                            type="button"
+                            id="refreshCaptchaBtn"
+                            class="refresh-captcha-btn"
+                            title="Generate a new CAPTCHA code">
+                            🔄 Refresh Code
+                        </button>
+                    </div>
+                    <input
+                        type="text"
+                        id="captchaInput"
+                        name="captchaInput"
+                        class="form-control"
+                        placeholder="Enter the CAPTCHA code shown above"
+                        autocomplete="off"
+                        required
+                        aria-required="true"
+                        aria-describedby="captchaError">
+                    <span id="captchaError" class="error-msg" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Form Buttons -->
+                <div class="form-buttons-row">
+                    <button type="submit" id="registerSubmit" class="btn-primary-submit">
+                        Register Student
+                    </button>
+                    <button type="reset" id="resetBtn" class="btn-secondary-reset">
+                        Reset Form
+                    </button>
+                </div>
+
+            </form>
+
+            <p style="text-align: center; margin-top: 25px;">
+                <a href="../php/view_registrations.php" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">
+                    View Registered Students &rarr;
+                </a>
+            </p>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 StudentHub - Digital Campus Portal | CHARUSAT</p>
+    </footer>
+
+    <!-- Plain JavaScript Script -->
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

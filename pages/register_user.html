@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - User Registration</title>
+    <link rel="icon" type="image/png" href="../docs/sitemap.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="heading-group">
+            <h1>Student Hub</h1>
+
+            <img
+                src="../docs/campus.jpg"
+                alt="StudentHub Campus"
+                class="heading-img"
+            >
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-container">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="register.html">Student Register</a>
+        <a href="register_user.html" class="active">User Register</a>
+        <a href="login.php">Login</a>
+        <a href="dashboard.php">Dashboard</a>
+        <a href="events.html">Events</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+        <a href="faq.html">FAQ</a>
+    </nav>
+
+    <!-- Action Bar with Dark Mode Toggle -->
+    <div class="action-bar-container">
+        <div class="action-bar">
+            <button id="theme-toggle" class="action-btn">
+                Dark Mode
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Registration Section -->
+    <main>
+        <section class="registration-card" style="max-width: 600px;">
+            <h2>User Registration</h2>
+            <p class="form-subtitle">Secure User Registration using MySQLi Prepared Statements &amp; Password Hashing</p>
+
+            <form action="../php/process_user_registration.php" method="POST">
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="userName" class="form-label">
+                        Name: <span class="required-star">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="userName"
+                        name="name"
+                        class="form-control"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="userEmail" class="form-label">
+                        Email: <span class="required-star">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        id="userEmail"
+                        name="email"
+                        class="form-control"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required>
+                    <span class="field-hint">Email must be unique in the system.</span>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="userPassword" class="form-label">
+                        Password: <span class="required-star">*</span>
+                    </label>
+                    <input
+                        type="password"
+                        id="userPassword"
+                        name="password"
+                        class="form-control"
+                        placeholder="Enter at least 6 characters"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required>
+                    <span class="field-hint">Password will be hashed using bcrypt before storing in MySQL.</span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-buttons-row">
+                    <button type="submit" class="btn-primary-submit">
+                        Register
+                    </button>
+                    <button type="reset" class="btn-secondary-reset">
+                        Reset
+                    </button>
+                </div>
+            </form>
+
+            <p style="text-align: center; margin-top: 25px; font-size: 13.5px;">
+                Already have an account? <a href="login.php" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">Login here</a>
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 StudentHub - Digital Campus Portal | CHARUSAT</p>
+    </footer>
+
+    <!-- Shared Portal Scripts -->
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

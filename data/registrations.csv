@@ -1,0 +1,7 @@
+Name,Email,Mobile,Password,Course,Year,Gender
+Yug Surana,25it098@charusat.edu.in,9876543210,$2y$10$wK1k9qDk8e7K4U2pGz8rLe8J7b6H5n4M3v2C1x0Z9y8X7w6V5u4T3,IT,2,male
+Aarav Patel,25it012@charusat.edu.in,9823456789,$2y$10$vN0j8pCj7d6J3T1oFy7qKd7I6a5G4m3L2u1B0w9Y8x7W6v5U4t3S2,IT,2,male
+Diya Shah,25ce045@charusat.edu.in,9812345678,$2y$10$uM9i7oBi6c5I2S0nEx6pJc6H5z4F3l2K1t0A9v8X7w6V5u4T3s2R1,CE,2,female
+Rohan Sharma,24cse103@charusat.edu.in,9898765432,$2y$10$tL8h6nAh5b4H1R9mDw5oIb5G4y3E2k1J0s9Z8u7W6v5U4t3S2r1Q0,CSE,3,male
+"Test User",test@charusat.edu.in,9876543210,$2y$10$AGsIhsTCRchM.3Ox1DqKou4c70ENpA9NEI5GimYkVfom1XisrNtRy,IT,2,male
+"YUG VILAS SURANA",25it098@charusat.edu.in,9724018590,$2y$10$y.wu2ktDKAcVQEPbp1VQre3m7Tp1XtxSKjs4NPzxPEmnl3Yb178S2,IT,2,male

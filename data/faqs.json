@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "question": "What is the minimum attendance requirement for university examinations?",
+    "category": "Academics",
+    "answer": "Students are required to maintain a minimum of 80% overall attendance in each course theory and practical session to be eligible for end-semester examinations."
+  },
+  {
+    "id": 2,
+    "question": "How can I register for technical events and hackathons?",
+    "category": "Campus Life",
+    "answer": "Navigate to the Events tab in StudentHub, filter by 'Technical' or 'Workshop', and click on the 'Register Now' button for your chosen event."
+  },
+  {
+    "id": 3,
+    "question": "Where can I view my semester results and grade sheets?",
+    "category": "Exams",
+    "answer": "Semester grade sheets and SGPA/CGPA transcripts are available on the student dashboard under Academic Records after institutional results are announced."
+  },
+  {
+    "id": 4,
+    "question": "How do I reset my StudentHub digital portal password?",
+    "category": "Technical",
+    "answer": "Click on 'Forgot Password' on the login screen or contact the IT Helpdesk with your student enrollment number and university email ID."
+  },
+  {
+    "id": 5,
+    "question": "What documents are required during initial campus admission verification?",
+    "category": "Admissions",
+    "answer": "Original and photocopied 10th/12th mark sheets, school leaving certificate, GUJCET/JEE scorecard, passport photographs, and category certificates (if applicable)."
+  },
+  {
+    "id": 6,
+    "question": "Can students apply for hostel accommodation online?",
+    "category": "Campus Life",
+    "answer": "Yes, hostel reservation forms can be completed through the StudentHub portal during the semester commencement window under Campus Facilities."
+  },
+  {
+    "id": 7,
+    "question": "What is the grading scale and CGPA calculation formula?",
+    "category": "Academics",
+    "answer": "CHARUSAT follows a 10-point relative grading scale. SGPA is calculated as the sum of (Credits × Grade Points) divided by the total semester credits."
+  },
+  {
+    "id": 8,
+    "question": "How do I apply for re-evaluation or re-checking of exam papers?",
+    "category": "Exams",
+    "answer": "Re-checking applications open within 7 days of result declaration through the exam portal with a nominal verification fee per course."
+  },
+  {
+    "id": 9,
+    "question": "Is Wi-Fi access available across the university campus?",
+    "category": "Technical",
+    "answer": "Yes, high-speed 24x7 Wi-Fi is available across academic blocks, labs, library, and hostels using student enrollment login credentials."
+  },
+  {
+    "id": 10,
+    "question": "Are there scholarships available for meritorious students?",
+    "category": "Admissions",
+    "answer": "Yes, merit-based scholarships and government financial aid (such as MYSY and digital Gujarat schemes) are facilitated by the University Student Welfare Office."
+  },
+  {
+    "id": 11,
+    "question": "How can I join student clubs and technical chapters?",
+    "category": "Campus Life",
+    "answer": "Club registrations open at the start of the odd semester during Club Induction Week. Students can register for IEEE, CSI, ACM, Robotics, and Arts clubs."
+  },
+  {
+    "id": 12,
+    "question": "What are the central library working hours and borrowing rules?",
+    "category": "Academics",
+    "answer": "The central library is open Monday through Saturday from 8:30 AM to 8:30 PM. Undergraduate students can borrow up to 4 books for 14 days."
+  },
+  {
+    "id": 13,
+    "question": "How are remedial or supplementary exams conducted for backlogs?",
+    "category": "Exams",
+    "answer": "Remedial exams are scheduled before the start of each regular semester. Timetables are released 3 weeks in advance on the portal notices."
+  },
+  {
+    "id": 14,
+    "question": "How do I report technical bugs or glitches on StudentHub?",
+    "category": "Technical",
+    "answer": "Submit a bug report with browser details and screenshots via the Feedback page or email studenthub-support@charusat.edu.in."
+  },
+  {
+    "id": 15,
+    "question": "What is the university policy on academic integrity and plagiarism?",
+    "category": "Academics",
+    "answer": "The university adheres to strict anti-plagiarism policies. Course projects and lab codes must be original with properly cited open-source references."
+  },
+  {
+    "id": 16,
+    "question": "How do I obtain an official bonafide certificate or transcript?",
+    "category": "Admissions",
+    "answer": "Apply online through the Student Services section of StudentHub. Certificates are usually generated within 2-3 working days."
+  }
+]

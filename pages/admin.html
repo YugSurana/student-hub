@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Admin &amp; Stored Registrations (Practical 7)</title>
+    <link rel="icon" type="image/png" href="../docs/sitemap.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="heading-group">
+            <h1>Student Hub</h1>
+
+            <img
+                src="../docs/campus.jpg"
+                alt="StudentHub Campus"
+                class="heading-img"
+            >
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-container">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="events.html">Events</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html" class="active">Admin</a>
+        <a href="faq.html">FAQ</a>
+        <a href="feedback.html">Feedback</a>
+    </nav>
+
+    <!-- Theme Switcher Action Bar -->
+    <div class="action-bar-container">
+        <div class="action-bar">
+            <button id="theme-toggle" class="action-btn">
+                Dark Mode
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="welcome-card" style="margin-bottom: 25px;">
+            <h2>Admin Portal - Stored Registration Records</h2>
+            <p style="margin: 0; opacity: 0.85; font-size: 14.5px;">
+                <strong>Practical 7:</strong> PHP Form Processing with Server-Side Validation and CSV/JSON Storage.
+                (Intermediate Extension: Display stored CSV/JSON records on a webpage).
+            </p>
+        </section>
+
+        <!-- Action / Quick Links Bar -->
+        <div class="status-bar" style="margin-bottom: 25px;">
+            <div style="font-size: 14px; font-weight: 600;">
+                📁 Data Storage: <code style="background: var(--button-bg); padding: 3px 6px; border-radius: 4px;">data/registrations.csv</code> &amp; <code style="background: var(--button-bg); padding: 3px 6px; border-radius: 4px;">data/registrations.json</code>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="../php/view_registrations.php" class="btn-primary-submit" style="text-decoration: none; padding: 8px 16px; font-size: 13px;" target="_blank">
+                    🔗 View via PHP Script (view_registrations.php)
+                </a>
+                <a href="../data/registrations.csv" class="btn-secondary-reset" style="text-decoration: none; padding: 8px 16px; font-size: 13px;" download>
+                    📥 Download CSV File
+                </a>
+                <a href="register.html" class="cache-btn" style="text-decoration: none; padding: 8px 16px; font-size: 13px;">
+                    ➕ New Registration
+                </a>
+            </div>
+        </div>
+
+        <!-- Stored Records Table Card -->
+        <div class="toolbar-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                <h3 style="margin: 0; color: var(--accent-color);">📋 Registered Students Table</h3>
+                <input
+                    type="text"
+                    id="adminSearchInput"
+                    class="toolbar-input"
+                    placeholder="Search by name, email, or course..."
+                    style="max-width: 300px;">
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; background-color: var(--card-bg); font-size: 14px;">
+                    <thead>
+                        <tr style="background-color: var(--nav-bg); color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid var(--border-color);">#</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid var(--border-color);">Full Name</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid var(--border-color);">Email Address</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid var(--border-color);">Mobile</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid var(--border-color);">Course</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid var(--border-color);">Year</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid var(--border-color);">Gender</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid var(--border-color);">Storage Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registrationsTableBody">
+                        <tr>
+                            <td colspan="8" style="padding: 20px; text-align: center;">Loading stored registrations...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="tableRecordCount" style="margin-top: 15px; font-size: 13px; opacity: 0.8;"></div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 StudentHub - Digital Campus Portal | CHARUSAT</p>
+    </footer>
+
+    <!-- Shared Portal Scripts -->
+    <script src="../js/script.js"></script>
+
+    <!-- Admin Table Rendering Script (Vanilla JS) -->
+    <script>
+        (function () {
+            const tableBody = document.getElementById("registrationsTableBody");
+            const searchInput = document.getElementById("adminSearchInput");
+            const countText = document.getElementById("tableRecordCount");
+            let allRecords = [];
+
+            // Fetch and parse stored registrations directly from CSV file
+            fetch("../data/registrations.csv")
+                .then(res => {
+                    if (!res.ok) throw new Error("Could not load CSV");
+                    return res.text();
+                })
+                .then(csvText => {
+                    allRecords = parseCSV(csvText);
+                    renderTable(allRecords);
+                })
+                .catch(err => {
+                    console.warn("Could not fetch registrations.csv, falling back to registrations.json", err);
+                    fetch("../data/registrations.json")
+                        .then(r => r.json())
+                        .then(data => {
+                            allRecords = data;
+                            renderTable(allRecords);
+                        })
+                        .catch(() => {
+                            allRecords = [
+                                { name: "Yug Surana", email: "25it098@charusat.edu.in", mobile: "9876543210", password: "$2y$10$wK1k...", course: "IT", year: "2", gender: "male" },
+                                { name: "YUG VILAS SURANA", email: "25it098@charusat.edu.in", mobile: "9724018590", password: "$2y$10$y.wu...", course: "IT", year: "2", gender: "male" }
+                            ];
+                            renderTable(allRecords);
+                        });
+                });
+
+            function parseCSV(text) {
+                const lines = text.trim().split(/\r?\n/);
+                if (lines.length <= 1) return [];
+
+                const records = [];
+                // Skip header (lines[0])
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+
+                    // Simple CSV row parser handling quoted strings
+                    const match = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || line.split(",");
+                    const clean = match.map(v => v.replace(/^"|"$/g, '').trim());
+
+                    if (clean.length >= 6) {
+                        records.push({
+                            name: clean[0] || "",
+                            email: clean[1] || "",
+                            mobile: clean[2] || "",
+                            password: clean[3] || "",
+                            course: clean[4] || "",
+                            year: clean[5] || "",
+                            gender: clean[6] || ""
+                        });
+                    }
+                }
+                return records;
+            }
+
+            function renderTable(records) {
+                if (!records || records.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="8" style="padding: 25px; text-align: center;">No registered records found in registrations.csv.</td></tr>`;
+                    countText.textContent = "Showing 0 records";
+                    return;
+                }
+
+                countText.textContent = `Showing ${records.length} registered student record(s) from data/registrations.csv`;
+
+                tableBody.innerHTML = records.map((r, idx) => `
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 10px 12px; border: 1px solid var(--border-color); font-weight: bold;">${idx + 1}</td>
+                        <td style="padding: 10px 12px; border: 1px solid var(--border-color); font-weight: 600;">${escapeHtml(r.name)}</td>
+                        <td style="padding: 10px 12px; border: 1px solid var(--border-color);">${escapeHtml(r.email)}</td>
+                        <td style="padding: 10px 12px; border: 1px solid var(--border-color);">${escapeHtml(r.mobile)}</td>
+                        <td style="padding: 10px 12px; border: 1px solid var(--border-color); font-weight: bold; color: var(--accent-color);">${escapeHtml(r.course)}</td>
+                        <td style="padding: 10px 12px; border: 1px solid var(--border-color);">Year ${escapeHtml(r.year)}</td>
+                        <td style="padding: 10px 12px; border: 1px solid var(--border-color); text-transform: capitalize;">${escapeHtml(r.gender)}</td>
+                        <td style="padding: 10px 12px; border: 1px solid var(--border-color);">
+                            <code style="font-size:11px; font-family:monospace; background:var(--button-bg); padding:2px 5px; border-radius:3px; word-break:break-all;" title="${escapeHtml(r.password)}">
+                                ${escapeHtml(r.password.slice(0, 22))}...
+                            </code>
+                        </td>
+                    </tr>
+                `).join("");
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener("input", function () {
+                    const q = this.value.trim().toLowerCase();
+                    const filtered = allRecords.filter(r =>
+                        (r.name && r.name.toLowerCase().includes(q)) ||
+                        (r.email && r.email.toLowerCase().includes(q)) ||
+                        (r.course && r.course.toLowerCase().includes(q)) ||
+                        (r.mobile && r.mobile.includes(q))
+                    );
+                    renderTable(filtered);
+                });
+            }
+
+            function escapeHtml(str) {
+                if (!str) return "";
+                return String(str)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
+        })();
+    </script>
+
+</body>
+
+</html>

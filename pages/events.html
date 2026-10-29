@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Events &amp; Student Directory (Practical 6)</title>
+    <link rel="icon" type="image/png" href="../docs/sitemap.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="heading-group">
+            <h1>Student Hub</h1>
+
+            <img
+                src="../docs/campus.jpg"
+                alt="StudentHub Campus"
+                class="heading-img"
+            >
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-container">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="events.html" class="active">Events</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+        <a href="faq.html">FAQ</a>
+        <a href="feedback.html">Feedback</a>
+    </nav>
+
+    <!-- Theme Switcher Action Bar -->
+    <div class="action-bar-container">
+        <div class="action-bar">
+            <button id="theme-toggle" class="action-btn">
+                Dark Mode
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+
+        <section class="welcome-card" style="margin-bottom: 20px;">
+            <h2>Dynamic Campus Data Portal</h2>
+            <p style="margin: 0; opacity: 0.85; font-size: 14.5px;">
+                <strong>Practical 6:</strong> Rendering external JSON data using JavaScript Fetch API with dynamic search, multi-criteria filtering, sorting, pagination, and offline caching.
+            </p>
+        </section>
+
+        <!-- View Tabs: Switch between Events, Students, and FAQs -->
+        <div class="view-tabs" role="tablist" aria-label="Data Views">
+            <button id="tabEvents" class="tab-btn active" role="tab" aria-selected="true">
+                📅 Campus Events (events.json)
+            </button>
+            <button id="tabStudents" class="tab-btn" role="tab" aria-selected="false">
+                🎓 Student Directory (students.json)
+            </button>
+            <button id="tabFaqs" class="tab-btn" role="tab" aria-selected="false">
+                ❓ Campus FAQs (faqs.json)
+            </button>
+        </div>
+
+        <!-- Status & Offline Cache Bar (Advanced Extension) -->
+        <div class="status-bar">
+            <div>
+                <span id="dataSourceBadge" class="cache-badge live">
+                    🟢 Live Fetch API
+                </span>
+                <span id="recordCountText" style="margin-left: 10px; font-size: 13px; font-weight: 500;">
+                    Loading records...
+                </span>
+            </div>
+
+            <div style="display: flex; gap: 8px;">
+                <button id="forceRefreshBtn" class="cache-btn" title="Force re-fetch from external JSON">
+                    🔄 Re-Fetch Live Data
+                </button>
+                <button id="clearCacheBtn" class="cache-btn" title="Clear localStorage cache">
+                    🗑️ Clear Cache
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="toolbar-card">
+            <div class="toolbar-grid">
+                <!-- Search Input -->
+                <div class="toolbar-group">
+                    <label for="searchInput">🔍 Search Records</label>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="toolbar-input"
+                        placeholder="Search by title, description, or name..."
+                        autocomplete="off">
+                </div>
+
+                <!-- Primary Filter Dropdown -->
+                <div class="toolbar-group">
+                    <label for="categoryFilter" id="categoryFilterLabel">Category</label>
+                    <select id="categoryFilter" class="toolbar-select">
+                        <option value="ALL">All Categories</option>
+                    </select>
+                </div>
+
+                <!-- Sort Dropdown -->
+                <div class="toolbar-group">
+                    <label for="sortFilter">Sort By</label>
+                    <select id="sortFilter" class="toolbar-select">
+                        <option value="default">Default Order</option>
+                        <option value="name-asc">Name: A to Z</option>
+                        <option value="name-desc">Name: Z to A</option>
+                        <option value="date-newest">Date: Newest First</option>
+                        <option value="date-oldest">Date: Oldest First</option>
+                    </select>
+                </div>
+
+                <!-- Page Size Selector -->
+                <div class="toolbar-group">
+                    <label for="pageSizeSelect">Show Per Page</label>
+                    <select id="pageSizeSelect" class="toolbar-select">
+                        <option value="6" selected>6 items</option>
+                        <option value="9">9 items</option>
+                        <option value="12">12 items</option>
+                        <option value="999">Show All</option>
+                    </select>
+                </div>
+
+                <!-- Reset Filters Button -->
+                <div class="toolbar-group">
+                    <button id="resetFiltersBtn" class="btn-reset-filters">
+                        Reset Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Intermediate Extension: Dependent Dropdowns (Country -> State -> City) -->
+            <div id="dependentDropdownsSection" class="dependent-dropdowns-section" style="display: none;">
+                <div class="dependent-title">
+                    🗺️ Location Filter (Dependent Dropdowns: Country &rarr; State &rarr; City)
+                </div>
+                <div class="dependent-grid">
+                    <div class="toolbar-group">
+                        <label for="countrySelect">1. Select Country</label>
+                        <select id="countrySelect" class="toolbar-select">
+                            <option value="">-- All Countries --</option>
+                        </select>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <label for="stateSelect">2. Select State</label>
+                        <select id="stateSelect" class="toolbar-select" disabled>
+                            <option value="">-- Select Country First --</option>
+                        </select>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <label for="citySelect">3. Select City</label>
+                        <select id="citySelect" class="toolbar-select" disabled>
+                            <option value="">-- Select State First --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingBox" class="loading-box" role="status">
+            <div class="spinner"></div>
+            <p style="margin: 0; font-weight: 600;">Fetching external JSON dataset using Fetch API...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorBox" class="error-box" role="alert" style="display: none;">
+            <p id="errorMessage" style="margin: 0 0 10px 0; font-weight: 600;"></p>
+            <button id="retryFetchBtn" class="btn-card-action">Retry Fetch</button>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyBox" class="empty-box" style="display: none;">
+            <p style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">No matching records found</p>
+            <p style="font-size: 13.5px; opacity: 0.8; margin: 0;">Try adjusting your search query or reset the filters.</p>
+        </div>
+
+        <!-- Dynamic Data Render Containers -->
+        <div id="dataGrid" class="data-grid"></div>
+        <div id="faqList" class="faq-list" style="display: none;"></div>
+
+        <!-- Pagination Controls -->
+        <div id="paginationContainer" class="pagination-container" style="display: none;">
+            <div id="paginationInfo" class="pagination-info">
+                Showing 1 - 6 of 16 records
+            </div>
+
+            <div id="paginationButtons" class="pagination-buttons">
+                <!-- Page buttons injected via JS -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 StudentHub - Digital Campus Portal | CHARUSAT</p>
+    </footer>
+
+    <!-- Shared Portal Scripts -->
+    <script src="../js/script.js"></script>
+
+    <!-- Practical 6 Modular Script (Fetch, Filter, Sort, Pagination, Cache) -->
+    <script src="../js/practical6.js"></script>
+
+</body>
+
+</html>

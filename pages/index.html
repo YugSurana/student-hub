@@ -15,10 +15,16 @@
     <header>
         <div class="heading-group">
             <h1>Student Hub</h1>
-            <img src="../docs/campus.jpg" alt="StudentHub Campus" class="heading-img">
+
+            <img
+                src="../docs/campus.jpg"
+                alt="StudentHub Campus"
+                class="heading-img"
+            >
         </div>
     </header>
-    <h2 id="yug">hello my friend 👍</h2>
+
+    <h2 id="yug">Hello my friend 👍</h2>
 
     <hr>
 
@@ -26,8 +32,8 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="register.html">Register</a>
-        <a href="login.html">Login</a>
-        <a href="dashboard.html">Dashboard</a>
+        <a href="login.php">Login</a>
+        <a href="dashboard.php">Dashboard</a>
         <a href="events.html">Events</a>
         <a href="profile.html">Profile</a>
         <a href="contact.html">Contact</a>
@@ -35,53 +41,199 @@
         <a href="faq.html">FAQ</a>
         <a href="feedback.html">Feedback</a>
     </nav>
+
+    <!-- Notification -->
+    <div id="notification">
+        <span>Workshop registration is now open</span>
+
+        <button id="closeBtn">Cancel</button>
+    </div>
+
+    <!-- Control Panel / Action Bar below navbar & above Welcome section -->
+    <div class="action-bar-container">
+        <p class="quick-info-text">
+            📢 Welcome to the StudentHub Portal! Customize your viewing experience and manage campus alerts using the quick controls below.
+        </p>
+
+        <div class="action-bar">
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="action-btn">
+                Dark Mode
+            </button>
+
+            <!-- Show Notification Button -->
+            <button id="show-notification-btn" class="action-btn">
+                🔔 Show Notification
+            </button>
+
+            <!-- Change Greeting Text Button -->
+            <button id="change-text-btn" class="action-btn">
+                👋 Change Greeting
+            </button>
+        </div>
+    </div>
+
     <main>
-        <section>
-            <div id="notification">
-                <span>
-                    workshop registration is now open
-                </span>
-                <button id="closeBtn"> hehe</button>
+
+        <!-- Welcome Section -->
+        <section class="welcome-card">
+            <h2>Welcome to StudentHub Portal</h2>
+
+            <p>
+                StudentHub is the official digital gateway for university students, faculty, and campus administrators. Designed to streamline academic workflows and foster a vibrant campus community, StudentHub brings together everything you need for a successful academic journey in one place.
+            </p>
+            <p>
+                Through this portal, students can easily track course schedules, register for upcoming skill-building workshops, access digital library archives, monitor examination results, and manage their personal academic profiles with ease.
+            </p>
+        </section>
+
+        <!-- Key Features Section -->
+        <section class="features-section">
+            <h2>Explore StudentHub Features</h2>
+
+            <div class="feature-cards-grid">
+                <article class="feature-box">
+                    <h3>🎯 Event & Workshop Management</h3>
+                    <p>
+                        Stay informed about upcoming hands-on technical bootcamps, guest lectures, cultural conventions, and sports meets. Register with a single click and receive calendar reminders.
+                    </p>
+                </article>
+
+                <article class="feature-box">
+                    <h3>📊 Student Performance Dashboard</h3>
+                    <p>
+                        Track your academic progress in real-time. View subject-wise attendance percentages, assignment submission deadlines, SGPA/CGPA breakdown, and downloadable grade cards.
+                    </p>
+                </article>
+
+                <article class="feature-box">
+                    <h3>💬 Peer Collaboration & Mentorship</h3>
+                    <p>
+                        Connect with faculty mentors, join project study groups, collaborate on open-source repositories, and participate in peer-to-peer learning forums.
+                    </p>
+                </article>
+
+                <article class="feature-box">
+                    <h3>📚 Central Resource Library</h3>
+                    <p>
+                        Access syllabus copies, previous years' question papers, recommended reference books, lab manuals, and video lectures uploaded directly by department professors.
+                    </p>
+                </article>
             </div>
         </section>
-    </main>
 
-    <main>
+        <!-- CHARUSAT Image Slider -->
+        <section class="image-slider">
 
-        <section>
-            <h2>Welcome to StudentHub</h2>
+            <h2>CHARUSAT Campus Gallery & Wireframe Showcase</h2>
+            <p>Browse through high-resolution campus views and interactive system architecture wireframes below:</p>
 
-            <p>
-                StudentHub is a digital platform where students can register,
-                participate in events, manage their profiles, and access
-                academic information.
-            </p>
+            <div class="slider-container">
+
+                <button id="prev-slide" aria-label="Previous Slide">
+                    &#10094;
+                </button>
+
+                <img
+                    id="slider-image"
+                    src="../docs/campus.jpg"
+                    alt="CHARUSAT Campus"
+                >
+
+                <button id="next-slide" aria-label="Next Slide">
+                    &#10095;
+                </button>
+
+            </div>
+
         </section>
 
-        <article>
-            <h3>Upcoming Workshop</h3>
+        <!-- Detailed Upcoming Workshops & Seminars -->
+        <section class="upcoming-events-container">
+            <h2>Featured Upcoming Events & Workshops</h2>
 
-            <p>
-                A Web Development Workshop will be conducted next week.
-            </p>
-        </article>
+            <article class="event-item">
+                <h3>🚀 Full-Stack Web Development Workshop 2026</h3>
+                <p>
+                    <strong>Date:</strong> August 20, 2026 &nbsp;|&nbsp; <strong>Time:</strong> 10:00 AM – 4:00 PM &nbsp;|&nbsp; <strong>Venue:</strong> Computer Engineering Lab 3
+                </p>
+                <p>
+                    Join our intensive 1-day hands-on workshop on modern web technologies including HTML5, CSS3, JavaScript ES6+, and responsive web design. All attendees will build a live portfolio project and receive a certificate of completion.
+                </p>
+            </article>
 
-        <aside>
-            <h3>Latest Notices</h3>
+            <article class="event-item">
+                <h3>🤖 Artificial Intelligence & Machine Learning Seminar</h3>
+                <p>
+                    <strong>Date:</strong> August 28, 2026 &nbsp;|&nbsp; <strong>Time:</strong> 2:00 PM – 5:00 PM &nbsp;|&nbsp; <strong>Venue:</strong> Main University Auditorium
+                </p>
+                <p>
+                    Industry leaders from leading Tech companies will discuss neural networks, deep learning applications in healthcare and robotics, and career roadmaps in AI engineering.
+                </p>
+            </article>
+
+            <article class="event-item">
+                <h3>🏆 Annual Hackathon - Code For Future 4.0</h3>
+                <p>
+                    <strong>Date:</strong> September 12-13, 2026 &nbsp;|&nbsp; <strong>Duration:</strong> 24 Hours Hackathon &nbsp;|&nbsp; <strong>Prizes:</strong> ₹50,000 Total Cash Prize
+                </p>
+                <p>
+                    Form teams of up to 4 members to solve real-world industry challenges in Smart Education, Healthcare, and Sustainable Tech. Mentors will be present throughout the event.
+                </p>
+            </article>
+        </section>
+
+        <!-- Academic Guidelines & Important Rules -->
+        <section class="guidelines-section">
+            <h2>Academic Guidelines & Campus Policies</h2>
+            <p>Please take note of the following important guidelines for the current academic session:</p>
+
+            <ul>
+                <li><strong>Attendance Requirement:</strong> Minimum 75% attendance is mandatory in theory and practical sessions to be eligible for end-semester examinations.</li>
+                <li><strong>Lab Submission Timelines:</strong> All lab manuals and code assignments must be submitted to the respective portal folder by Friday 5:00 PM.</li>
+                <li><strong>Identity Cards:</strong> Carrying your official university RFID Student ID card is compulsory while inside campus premises, library, and examination halls.</li>
+                <li><strong>Library Book Retention:</strong> Students can borrow up to 4 books simultaneously for a maximum duration of 14 days without late renewal fees.</li>
+            </ul>
+        </section>
+
+        <!-- Latest Notices & Announcements -->
+        <aside class="notices-section">
+            <h3>Latest Campus Notices & Bulletins</h3>
 
             <ol type="i">
-                <li>Lab Submission on Friday</li>
-                <li>Workshop Registration Open</li>
-                <li>Hackathon Next Month</li>
+                <li>
+                    <strong>Lab Submission Deadline:</strong> Department of Computer Engineering practical journals due by Friday, 5:00 PM.
+                </li>
+                <li>
+                    <strong>Workshop Registration Open:</strong> Seats are filling fast for the Web Development Bootcamp. Register via the Events tab.
+                </li>
+                <li>
+                    <strong>Mid-Semester Examination Schedule:</strong> Tentative timetables for B.Tech Semester III & V have been published on the bulletin board.
+                </li>
+                <li>
+                    <strong>Scholarship Application Window:</strong> Merit cum means financial assistance forms are open until August 30.
+                </li>
+                <li>
+                    <strong>Sports Club Tryouts:</strong> Basketball and Table Tennis team selections will commence this Saturday at the Campus Sports Complex.
+                </li>
             </ol>
         </aside>
+
+        <!-- Quick Contact Info Card -->
+        <section class="quick-contact-box">
+            <h3>Need Assistance? Student Support Helpdesk</h3>
+            <p>If you encounter technical issues with portal login, course registration, or fee payments, please contact our helpdesk:</p>
+            <p>
+                📧 <strong>Email:</strong> support@studenthub.edu.in &nbsp;|&nbsp; 📞 <strong>Helpline:</strong> +91 98765 43210 &nbsp;|&nbsp; 🏢 <strong>Office:</strong> Student Activity Center, Block B, Room 102
+            </p>
+        </section>
 
     </main>
 
     <footer>
         <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
-    
+
     <script src="../js/script.js"></script>
 
 </body>
